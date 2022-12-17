@@ -19,18 +19,13 @@ npm -v
 npm init
 ```
 
-4. Install dev dependencies by:
-```
-npm i
-```
-
-5. Using Command prompt, go to project location and install Cypress (using the following command):
+4. Using Command prompt, go to project location and install Cypress (using the following command):
 ```
 npm install cypress --save-dev
 ```
 _**--save-dev** is supposed to save Cypress settings in package.json, so if you will move the project somewhere else, package.json will still have Cypress installed (and you won't have to do it again)._
 
-6. Download [Visual Studio Code](https://www.youtube.com/watch?v=JPZsB_6yHVo) editor.
+5. Download [Visual Studio Code](https://www.youtube.com/watch?v=JPZsB_6yHVo) editor.
 
 
 ## Cypress commands

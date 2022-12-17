@@ -28,5 +28,10 @@ Cypress.Commands.add('checkbox_class_assert', (label_name, status) => {
     var xpath_name = "//span[contains(text(),'" + label_name + "')]/../span[1]/*[local-name()='svg']";
     var class_name = 'rct-icon rct-icon-' + status;
     cy.xpath(xpath_name).should('have.class', class_name);
-
 })
+
+// Cypress.Commands.add('check_table_field_value', (field_column_no, value) => {
+//     var xpath_field = "//div[@class='rt-tr -odd']/div["+field_column_no+"]";
+//     cy.xpath(xpath_field).should('have.text', value);
+// })
+// I want to create a function that is automatically checking the entire row from the table. Work in progres...

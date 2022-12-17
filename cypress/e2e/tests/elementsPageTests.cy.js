@@ -1,10 +1,10 @@
 
-describe('Check page elements', () => {
-    it('Verify title of the page positive', () => {
-        cy.visit("https://demoqa.com/");
-        cy.title().should('eq', 'ToolsQA');
-    })
-})
+// describe('Check page elements', () => {
+//     it('Verify title of the page positive', () => {
+//         cy.visit("https://demoqa.com/");
+//         cy.title().should('eq', 'ToolsQA');
+//     })
+// })
 
 describe('Elements tests', () => {
     it('Text box', () => {
@@ -12,11 +12,26 @@ describe('Elements tests', () => {
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.wait(500);
         cy.xpath("//span[contains(text(), 'Text Box')]").click();
-        cy.xpath("//input[@id='userName']").type("Elisa Enea");
-        cy.xpath("//input[@id='userEmail']").type("sz12anca@gmail.com");
-        cy.get("#currentAddress").type("This is the current address.");
-        cy.get("#permanentAddress").type("This is my permanent address.");
+
+        cy.xpath("//div[@class='main-header']").should('have.text', 'Text Box');
+
+        var userName = "Elisa Enea";
+        var userEmail = "sz12anca@gmail.com";
+        var currentAddress = "This is the current address.";
+        var permanentAddress = "This is my permanent address.";
+
+        cy.xpath("//input[@id='userName']").type(userName); //todo take this value from other file. VariablesFile.
+        cy.xpath("//input[@id='userEmail']").type(userEmail);
+        cy.get("#currentAddress").type(currentAddress);
+        cy.get("#permanentAddress").type(permanentAddress);
         cy.get("#submit").click();
+
+        cy.paragraph_contains("name", userName);
+        cy.paragraph_contains("email", userEmail);
+        cy.paragraph_contains("currentAddress", currentAddress);
+        cy.paragraph_contains("permanentAddress", permanentAddress);
+
+
 
         //todo assert that all the tasks appear under the form
         //todo try to input an invalid email

@@ -30,6 +30,11 @@ Cypress.Commands.add('checkbox_class_assert', (label_name, status) => {
     cy.xpath(xpath_name).should('have.class', class_name);
 })
 
+Cypress.Commands.add('paragraph_contains', (id_name, text) => {
+    var xpath_by_id = "//p[@id='"+id_name+"']/text()[2]";
+    cy.xpath(xpath_by_id).should("have.text", text);
+})
+
 // Cypress.Commands.add('check_table_field_value', (field_column_no, value) => {
 //     var xpath_field = "//div[@class='rt-tr -odd']/div["+field_column_no+"]";
 //     cy.xpath(xpath_field).should('have.text', value);

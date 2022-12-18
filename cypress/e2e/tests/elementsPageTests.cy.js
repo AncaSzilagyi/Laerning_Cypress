@@ -1,10 +1,10 @@
 
-// describe('Check page elements', () => {
-//     it('Verify title of the page positive', () => {
-//         cy.visit("https://demoqa.com/");
-//         cy.title().should('eq', 'ToolsQA');
-//     })
-// })
+describe('Check page elements', () => {
+    it('Verify title of the page positive', () => {
+        cy.visit("https://demoqa.com/");
+        cy.title().should('eq', 'ToolsQA');
+    })
+})
 
 describe('Elements tests', () => {
     it('Text box', () => {
@@ -26,12 +26,14 @@ describe('Elements tests', () => {
         cy.get("#permanentAddress").type(permanentAddress);
         cy.get("#submit").click();
 
-        cy.paragraph_contains("name", userName);
-        cy.paragraph_contains("email", userEmail);
-        cy.paragraph_contains("currentAddress", currentAddress);
-        cy.paragraph_contains("permanentAddress", permanentAddress);
+        cy.assert_paragraph_contains("name", userName);
+        cy.assert_paragraph_contains("email", userEmail);
+        cy.assert_paragraph_contains("currentAddress", currentAddress);
+        cy.assert_paragraph_contains("permanentAddress", permanentAddress);
 
-
+        userName = "Another test name";
+        cy.xpath("//input[@id='userName']").type(userName);
+        cy.assert_paragraph_contains("name", userName);
 
         //todo assert that all the tasks appear under the form
         //todo try to input an invalid email
@@ -68,51 +70,32 @@ describe('Elements tests', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Radio Button')]").click();
+
         cy.xpath("//label[contains(text(),'Yes')]/../input").click({ force: true }).should('be.checked');
+        cy.radio_assert_option("Yes");
+
+        cy.xpath("//label[contains(text(),'Impressive')]/../input").click({ force: true }).should('be.checked');
+        cy.radio_assert_option("Impressive");
     })
 
     it('Web Tables', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
-        cy
-            .xpath('//div/h5[contains(text(), "Elements")]')
-            .click();
-        cy
-            .xpath("//span[contains(text(), 'Web Tables')]")
-            .click();
+        cy.xpath('//div/h5[contains(text(), "Elements")]').click();
+        cy.xpath("//span[contains(text(), 'Web Tables')]").click();
 
-        cy
-            .xpath('//button[contains(text(),"Add")]')
-            .click();
-        cy
-            .xpath("//input[@placeholder='First Name']")
-            .type('Elisa');
-        cy
-            .xpath("//input[@placeholder='Last Name']")
-            .type('Enea');
-        cy
-            .xpath("//input[@placeholder='name@example.com']")
-            .type('test@gmail.com');
-        cy
-            .xpath("//input[@placeholder='Age']")
-            .type('23');
-        cy
-            .xpath("//input[@placeholder='Salary']")
-            .type('4000');
-        cy
-            .xpath("//input[@placeholder='Department']")
-            .type('testing department');
-        cy
-            .xpath("//button[@id='submit']")
-            .click();
+        cy.xpath('//button[contains(text(),"Add")]').click();
+        cy.xpath("//input[@placeholder='First Name']").type('Elisa');
+        cy.xpath("//input[@placeholder='Last Name']").type('Enea');
+        cy.xpath("//input[@placeholder='name@example.com']").type('test@gmail.com');
+        cy.xpath("//input[@placeholder='Age']").type('23');
+        cy.xpath("//input[@placeholder='Salary']").type('4000');
+        cy.xpath("//input[@placeholder='Department']").type('testing department');
+        cy.xpath("//button[@id='submit']").click();
 
         // to validate here some invalid values or empty fields.
 
-        cy
-            .xpath("//input[@placeholder='Type to search']")
-            .type('Elisa');
-        cy
-            .xpath("//div[@class='rt-tr -odd']/div[1]")
-            .should('have.text', 'Elisa');
+        cy.xpath("//input[@placeholder='Type to search']").type('Elisa');
+        cy.xpath("//div[@class='rt-tr -odd']/div[1]").should('have.text', 'Elisa');
     })
 
 

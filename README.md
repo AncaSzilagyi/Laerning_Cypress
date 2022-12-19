@@ -46,7 +46,8 @@ node_modules/.bin/cypress run --spec "cypress\e2e\tests\elementsPageTest.cy.js" 
 npm install --save-dev cypress-file-upload
 ```
 
-2. Once you have done the previous step successfully, you can see the package name in your package.json file:
+2. Once you have done the previous step successfully, you should see the package name in your package.json file:
+![Cypress file upload option in package json](https://user-images.githubusercontent.com/110525069/208462494-7663e6e3-2307-4c89-9e9b-0edf5b399b80.png)
 
 3. We will now import the node package into our Cypress project. In order to import, write the command from below in .cypress/.support/commands.js:
 ```

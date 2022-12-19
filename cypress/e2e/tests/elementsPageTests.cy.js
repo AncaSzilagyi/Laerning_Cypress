@@ -1,20 +1,19 @@
 
-describe('Check page elements', () => {
-    it('Verify title of the page positive', () => {
-        cy.visit("https://demoqa.com/");
-        cy.title().should('eq', 'ToolsQA');
-    })
-})
-
-describe('Elements tests', () => {
-    it('Text box', () => {
+// describe('Check page elements', () => {
+//     it('Verify title of the page positive', () => {
+//         cy.visit("https://demoqa.com/");
+//         cy.title().should('eq', 'ToolsQA');
+//     })
+// })
+describe('Text box tests', () => {
+    it('Go to Text Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.wait(500);
         cy.xpath("//span[contains(text(), 'Text Box')]").click();
-
         cy.xpath("//div[@class='main-header']").should('have.text', 'Text Box');
-
+    })
+    it('Submit the form', () => {
         var userName = "Elisa Enea";
         var userEmail = "sz12anca@gmail.com";
         var currentAddress = "This is the current address.";
@@ -25,25 +24,33 @@ describe('Elements tests', () => {
         cy.get("#currentAddress").type(currentAddress);
         cy.get("#permanentAddress").type(permanentAddress);
         cy.get("#submit").click();
+    })
 
+    it('Assert test data', () => {
         cy.assert_paragraph_contains("name", userName);
         cy.assert_paragraph_contains("email", userEmail);
         cy.assert_paragraph_contains("currentAddress", currentAddress);
         cy.assert_paragraph_contains("permanentAddress", permanentAddress);
+    })
 
+    it('Update test data', () => {
         userName = "Another test name";
         cy.xpath("//input[@id='userName']").type(userName);
         cy.assert_paragraph_contains("name", userName);
-
-        //todo assert that all the tasks appear under the form
-        //todo try to input an invalid email
     })
+    //todo assert that all the tasks appear under the form
+    //todo try to input an invalid email
+})
 
-    it('Check Box', () => {
+describe('Check Box tests', () => {
+
+    it('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Check Box')]").click();
+    })
 
+    it('Check and assert', () => {
         cy.xpath("//button[@aria-label='Expand all']").click({ force: true });
         cy.xpath("//span[contains(text(),'Notes')]/../span[1]").click();
 
@@ -63,14 +70,17 @@ describe('Elements tests', () => {
         cy.checkbox_class_assert('Desktop', 'uncheck');
         cy.checkbox_class_assert('Documents', 'uncheck');
         cy.checkbox_class_assert('Downloads', 'uncheck');
-
     })
+})
 
-    it('Radio button', () => {
+describe('Radio button tests', () => {
+    it('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Radio Button')]").click();
+    })
 
+    it('Select options and assert', () => {
         cy.xpath("//label[contains(text(),'Yes')]/../input").click({ force: true }).should('be.checked');
         cy.radio_assert_option("Yes");
 
@@ -78,11 +88,16 @@ describe('Elements tests', () => {
         cy.radio_assert_option("Impressive");
     })
 
-    it('Web Tables', () => {
+})
+
+describe('Web tables tests', () => {
+    it('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Web Tables')]").click();
+    })
 
+    it('Complete the form', () => {
         cy.xpath('//button[contains(text(),"Add")]').click();
         cy.xpath("//input[@placeholder='First Name']").type('Elisa');
         cy.xpath("//input[@placeholder='Last Name']").type('Enea');
@@ -91,26 +106,32 @@ describe('Elements tests', () => {
         cy.xpath("//input[@placeholder='Salary']").type('4000');
         cy.xpath("//input[@placeholder='Department']").type('testing department');
         cy.xpath("//button[@id='submit']").click();
-
         // to validate here some invalid values or empty fields.
+    })
 
+    it('Assert the submitted form', () => {
         cy.xpath("//input[@placeholder='Type to search']").type('Elisa');
         cy.xpath("//div[@class='rt-tr -odd']/div[1]").should('have.text', 'Elisa');
     })
+})
 
-
-    it('Buttons', () => {
+describe('Buttons tests', () => {
+    it('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Buttons')]").click();
+    })
+
+    it('Press the buttons', () => {
         cy.xpath("//button[@id='doubleClickBtn']").dblclick();
         cy.xpath("//button[@id='rightClickBtn']").rightclick();
         cy.xpath("//button[text()='Click Me']").click();
+    })
 
+    it('Assert the pressed buttons', () => {
         // var paras = cy.xpath('//p[contains(text(), "You have done")]');
         cy.get('#doubleClickMessage').should('contain.text', 'You have done a double click');
         cy.get('#rightClickMessage').should('contain.text', 'You have done a right click');
         cy.get('#dynamicClickMessage').should('contain.text', 'You have done a dynamic click');
     })
-
 })

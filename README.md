@@ -39,6 +39,23 @@ node_modules/.bin/cypress open
 node_modules/.bin/cypress run --spec "cypress\e2e\tests\elementsPageTest.cy.js" --headed
 ```
 
+## Commands for uploading files - still working on this part _(for formsPageTests.cy.js)_
+
+1. Install the cypress-file-upload node package using the following command:
+```
+npm install --save-dev cypress-file-upload
+```
+
+2. Once you have done the previous step successfully, you can see the package name in your package.json file:
+
+3. We will now import the node package into our Cypress project. In order to import, write the command from below in .cypress/.support/commands.js:
+```
+import 'cypress-file-upload';
+```
+
+I saved a picture named dogPhoto.jpg in fixtures folder (with relative path => cypress/fixtures/dogPhoto.jpg).
+
+
 
 ## Free websites for UI testing
 - [DemoQA](https://demoqa.com/)

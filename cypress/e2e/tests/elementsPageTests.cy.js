@@ -6,6 +6,7 @@
 //     })
 // })
 describe('Text box tests', () => {
+
     it('Go to Text Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
@@ -74,6 +75,7 @@ describe('Check Box tests', () => {
 })
 
 describe('Radio button tests', () => {
+
     it('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
@@ -91,6 +93,7 @@ describe('Radio button tests', () => {
 })
 
 describe('Web tables tests', () => {
+
     it('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
@@ -116,6 +119,7 @@ describe('Web tables tests', () => {
 })
 
 describe('Buttons tests', () => {
+    
     it('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();

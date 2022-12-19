@@ -15,7 +15,7 @@ describe('Practice Form tests', () => {
         var userEmail = "test@gmail.com";
         var gender = 'Female';
         var mobileNumber = "1234567890";
-        var subjects = "Computer sciene";
+        var subjects = "Computer Science";
         var imagePath = "cypress/fixtures/dogPhoto.jpg";
         var currentAddress = "This is my current address.";
 
@@ -26,14 +26,17 @@ describe('Practice Form tests', () => {
         cy.xpath("//input[@id='userNumber']").type(mobileNumber);
         cy.xpath('//input[@id="dateOfBirthInput"]').click();
         cy.get('select[class="react-datepicker__year-select"]').select('1999').should('have.value', '1999');
-        cy.get('select[class="react-datepicker__month-select"]').select('June').should('have.value', 'June');
+        cy.get('select[class="react-datepicker__month-select"]').select('5').should('have.value', '5');
         cy.xpath("//div[contains(text(), '12')]").click();
         cy
             .xpath("//label[contains(text(), 'Subjects')]/../../div[2]")
-            .type(subjects)
-            .type('{enter}');
-        cy.xpath("//label[contains(text(), 'Sports')]/../input").check();
-        cy.xpath("//input[@id='uploadPicture']").attachFile(imagePath);
+            .type('Computer Science{enter}')
+        cy.xpath("//label[contains(text(), 'Sports')]/../input").check({ force: true });
+        cy
+            .xpath("//input[@id='uploadPicture']")
+            .click()
+            .attachFile(imagePath);
+        // cy.xpath("//input[@id='uploadPicture']").attachFile(imagePath);
         cy.get("#currentAddress").type(currentAddress);
         cy.xpath("//label[contains(text(), 'State and City')]/../../div[2]/div/div/div/div[contains(text(),'NCR')]").select();
         cy.xpath("//*[contains(text(),'Select City')]").click();

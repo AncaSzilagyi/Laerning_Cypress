@@ -7,7 +7,7 @@
 // })
 describe('Text box tests', () => {
 
-    it('Go to Text Box page', () => {
+    before('Go to Text Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.wait(500);
@@ -16,7 +16,7 @@ describe('Text box tests', () => {
     })
     it('Submit the form', () => {
         var userName = "Elisa Enea";
-        var userEmail = "sz12anca@gmail.com";
+        var userEmail = "test@gmail.com";
         var currentAddress = "This is the current address.";
         var permanentAddress = "This is my permanent address.";
 
@@ -45,13 +45,20 @@ describe('Text box tests', () => {
 
 describe('Check Box tests', () => {
 
-    it('Go to Check Box page', () => {
+    //todo use the before function for all the setup clicks.
+
+    // before(function () {
+    //     cy.visit('https://the-internet.herokuapp.com/upload')
+    // })
+
+    before('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Check Box')]").click();
     })
 
     it('Check and assert', () => {
+        
         cy.xpath("//button[@aria-label='Expand all']").click({ force: true });
         cy.xpath("//span[contains(text(),'Notes')]/../span[1]").click();
 
@@ -76,7 +83,7 @@ describe('Check Box tests', () => {
 
 describe('Radio button tests', () => {
 
-    it('Go to Check Box page', () => {
+    before('Go to Radio button page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Radio Button')]").click();
@@ -94,7 +101,7 @@ describe('Radio button tests', () => {
 
 describe('Web tables tests', () => {
 
-    it('Go to Check Box page', () => {
+    before('Go to Web tables page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Web Tables')]").click();
@@ -119,8 +126,8 @@ describe('Web tables tests', () => {
 })
 
 describe('Buttons tests', () => {
-    
-    it('Go to Check Box page', () => {
+
+    before('Go to Buttons page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
         cy.xpath('//div/h5[contains(text(), "Elements")]').click();
         cy.xpath("//span[contains(text(), 'Buttons')]").click();
@@ -139,3 +146,4 @@ describe('Buttons tests', () => {
         cy.get('#dynamicClickMessage').should('contain.text', 'You have done a dynamic click');
     })
 })
+

@@ -1,4 +1,4 @@
-# Cypress | basic commands for demoQA
+# Cypress | basic commands for demoQA.com
 Here are some tests for basic CRUD operations on www.demoQA.com.
 
 ## Setup

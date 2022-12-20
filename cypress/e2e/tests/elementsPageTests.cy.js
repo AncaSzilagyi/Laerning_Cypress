@@ -35,28 +35,14 @@ describe('Text box tests', () => {
         cy.assert_paragraph_contains("email", userEmail);
         cy.assert_paragraph_contains("currentAddress", currentAddress);
         cy.assert_paragraph_contains("permanentAddress", permanentAddress);
-    })
 
-    // it('Assert test data', () => {
-
-    // })
-
-    it('Update test data', () => {
         var userName = "Another test name";
         cy.xpath("//input[@id='userName']").type(userName);
         cy.assert_paragraph_contains("name", userName);
     })
-    //todo assert that all the tasks appear under the form
-    //todo try to input an invalid email
 })
 
 describe('Check Box tests', () => {
-
-    //todo use the before function for all the setup clicks.
-
-    // before(function () {
-    //     cy.visit('https://the-internet.herokuapp.com/upload')
-    // })
 
     before('Go to Check Box page', () => {
         cy.visit("https://demoqa.com/"); // Opens the URL
@@ -103,7 +89,6 @@ describe('Radio button tests', () => {
         cy.xpath("//label[contains(text(),'Impressive')]/../input").click({ force: true }).should('be.checked');
         cy.radio_assert_option("Impressive");
     })
-
 })
 
 describe('Web tables tests', () => {
@@ -128,10 +113,6 @@ describe('Web tables tests', () => {
         cy.xpath("//input[@placeholder='Type to search']").type('Elisa');
         cy.xpath("//div[@class='rt-tr -odd']/div[1]").should('have.text', 'Elisa');
     })
-
-    // it('Assert the submitted form', () => {
-        
-    // })
 })
 
 describe('Buttons tests', () => {
@@ -152,10 +133,5 @@ describe('Buttons tests', () => {
         cy.get('#rightClickMessage').should('contain.text', 'You have done a right click');
         cy.get('#dynamicClickMessage').should('contain.text', 'You have done a dynamic click');
     })
-
-    // it('Assert the pressed buttons', () => {
-        
-
-    // })
 })
 

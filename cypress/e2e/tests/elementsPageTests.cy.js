@@ -25,17 +25,24 @@ describe('Text box tests', () => {
         cy.get("#currentAddress").type(currentAddress);
         cy.get("#permanentAddress").type(permanentAddress);
         cy.get("#submit").click();
-    })
 
-    it('Assert test data', () => {
+        var userName = "Elisa Enea";
+        var userEmail = "test@gmail.com";
+        var currentAddress = "This is the current address.";
+        var permanentAddress = "This is my permanent address.";
+
         cy.assert_paragraph_contains("name", userName);
         cy.assert_paragraph_contains("email", userEmail);
         cy.assert_paragraph_contains("currentAddress", currentAddress);
         cy.assert_paragraph_contains("permanentAddress", permanentAddress);
     })
 
+    // it('Assert test data', () => {
+
+    // })
+
     it('Update test data', () => {
-        userName = "Another test name";
+        var userName = "Another test name";
         cy.xpath("//input[@id='userName']").type(userName);
         cy.assert_paragraph_contains("name", userName);
     })
@@ -117,12 +124,14 @@ describe('Web tables tests', () => {
         cy.xpath("//input[@placeholder='Department']").type('testing department');
         cy.xpath("//button[@id='submit']").click();
         // to validate here some invalid values or empty fields.
-    })
 
-    it('Assert the submitted form', () => {
         cy.xpath("//input[@placeholder='Type to search']").type('Elisa');
         cy.xpath("//div[@class='rt-tr -odd']/div[1]").should('have.text', 'Elisa');
     })
+
+    // it('Assert the submitted form', () => {
+        
+    // })
 })
 
 describe('Buttons tests', () => {
@@ -133,17 +142,20 @@ describe('Buttons tests', () => {
         cy.xpath("//span[contains(text(), 'Buttons')]").click();
     })
 
-    it('Press the buttons', () => {
+    it('Press the buttons and assert', () => {
         cy.xpath("//button[@id='doubleClickBtn']").dblclick();
         cy.xpath("//button[@id='rightClickBtn']").rightclick();
         cy.xpath("//button[text()='Click Me']").click();
-    })
 
-    it('Assert the pressed buttons', () => {
         // var paras = cy.xpath('//p[contains(text(), "You have done")]');
         cy.get('#doubleClickMessage').should('contain.text', 'You have done a double click');
         cy.get('#rightClickMessage').should('contain.text', 'You have done a right click');
         cy.get('#dynamicClickMessage').should('contain.text', 'You have done a dynamic click');
     })
+
+    // it('Assert the pressed buttons', () => {
+        
+
+    // })
 })
 
